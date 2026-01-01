@@ -1,0 +1,28 @@
+{% extends "product/base.html" %}
+
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+  
+
+  <div class="row g-4">
+    <!-- Product 1 -->
+     {% for product in products %}
+    <div class="col-12 col-md-3">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <h5 class="card-title mb-2">{{ product.name }}</h5>
+          <p class="card-text text-muted mb-3">{{ product.description }}</p>
+          <div class="d-flex align-items-center justify-content-between">
+            <span class="fw-bold">${{product.price}}</span>
+            <a href="{% url 'checkout' product.id %}" class="btn btn-primary">Buy Now</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+{% endblock %}
